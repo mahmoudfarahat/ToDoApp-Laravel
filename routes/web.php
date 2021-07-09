@@ -38,8 +38,15 @@ Route::post('submitsignup', 'taskcontroller@submitsignup');
 
 Route::get('add', 'taskcontroller@add');
 
+Route::get('edittask/{id}','taskcontroller@edittask');
+
+Route::post('updatetask','taskcontroller@updatetask');
+
+
+
 Route::post('addtask', 'taskcontroller@addtask');
 
-Route::get('showtasks', 'taskcontroller@showtasks');
+Route::get('deletetask/{id}', 'taskcontroller@deletetask');
+// Route::get('showtasks', 'taskcontroller@showtasks');
 
 

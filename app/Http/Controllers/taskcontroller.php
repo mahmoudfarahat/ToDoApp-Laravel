@@ -21,6 +21,8 @@ class taskcontroller extends Controller
             'password' => 'required|min:6',
             'email'    => 'required|email'
         ]);
+
+        $data['password'] = bcrypt( $data['password']);
         $op=  User::create($data);
         if($op){
 
@@ -30,10 +32,60 @@ class taskcontroller extends Controller
         }
     }
 
+
+
     public function add()
     {
-        return view('addtask');
+
+
+        $tasks = task::get();
+        return view('addtask', ['tasks' => $tasks]);
+
+
     }
+
+function deletetask($id){
+    $op =task::where('id',$id)->delete();
+    if ($op){
+        return back();
+    }else{
+        echo 'error in delete';
+    }
+}
+
+function edittask($id){
+
+    // $tasks = task::where('id',$id)>get();
+    $tasks = task::find($id);
+
+    return view('edittask',['tasks'=>$tasks]);
+
+
+}
+
+public function updatetask(Request $request)
+{
+   $data =  $this->validate(request(),[
+    'title'     => 'required|min:3',
+    'content' => 'required|min:10',
+    ]
+    );
+
+
+
+$op=  task::where('id',$request->id)->update($data);
+
+if($op){
+
+    return redirect(url('/add'));
+}else{
+    echo 'error try again';
+}
+
+}
+
+
+
     public function addtask(Request $request)
     {
        $data =  $this->validate(request(),[
@@ -42,18 +94,18 @@ class taskcontroller extends Controller
         ]
         );
 
+
+
     $op=  task::create($data);
 
     if($op){
-        return view('tasks');
+        return back();
     }else{
         echo 'error try again';
     }
 
+   }
 
-    }
 
-    public function showtasks(){
-        return view('tasks');
-    }
+
 }

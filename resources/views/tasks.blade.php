@@ -12,30 +12,42 @@
 <body>
 
 
-<div class="container   ">
+<div class="container   "  >
     {{-- <h2>{{'welcome'}}</h2> --}}
 
     {{-- @foreach ($data as $fetchedData)
 
     @endforeach --}}
-
-<div class="row my-5">
-    <div class="col-3">
-        <div class="card"  >
+        <h1 class="text-center">My Tasks</h1>
+<div class=" row my-5">
+    @foreach ($tasks as $fetchedData)
+    <div class="col-6">
+        <div class="card mb-3 ">
+            <h5 class="card-header">
+                {{$fetchedData ->title}}
+            </h5>
             <div class="card-body">
-              <h5 class="card-title"> </h5>
 
-              <p class="card-text"> </p>
-              <div class="d-flex">
-                <a href="#" class="btn btn-primary mr-2" style="width: 50%">Edit</a>
-                <a href="#" class="btn btn-danger" style="width: 50%">Delete</a>
-              </div>
+              <p class="card-text">{{$fetchedData ->content}}</p>
+              <p class="card-text">{{$fetchedData ->created_at}}</p>
+              <p class="card-text">{{$fetchedData ->updated_at}}</p>
+              <div class="d-flex justify-content-end"  ">
+                <a href="#" class="btn btn-success me-2 ">Mark as Completed</a>
+                <a href="#" class="btn btn-primary me-2 ">Edit</a>
+              <a href="#" class="btn btn-danger ">Delele</a>
 
+            </div>
             </div>
           </div>
     </div>
 
+
+
+@endforeach
+
 </div>
+
+
 
 
 

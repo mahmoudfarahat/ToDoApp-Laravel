@@ -13,7 +13,7 @@
 
 
 <div class="container d-flex justify-content-center  ">
-    <form  class="  col-lg-4 col-xxl-3 col-md-5 col-sm-7"  action="{{ url('/addtask') }}"   style=" margin-top: 250px;
+    <form  class="  col-lg-4 col-xxl-3 col-md-5 col-sm-7"  action="{{ url('/addtask') }}"   style=" margin-top: 100px;
 }"   method="post"  enctype ="multipart/form-data">
       <h4>Add your Task</h4>
 
@@ -37,7 +37,41 @@
       </form>
 
  </div>
+<div class="container">
 
+    <div class=" row my-5">
+        @foreach ($tasks as $fetchedData)
+        <div class="col-6">
+            <div class="card mb-3 ">
+                <div class="d-flex justify-content-between card-header"   >
+                <h5>{{$fetchedData ->title}}</h5>
+                <h5>{{$fetchedData ->updated_at}}</h5>
+            </div>
+
+                <div class="card-body">
+
+                  <p class="card-text">{{$fetchedData ->content}}</p>
+
+                  <div class="d-flex justify-content-end"   >
+                    {{-- <a href="#" class="btn btn-success me-2 ">Mark as Completed</a> --}}
+                    <a href="{{ url('/edittask/'.$fetchedData ->id)}}" class="btn btn-primary me-2 ">Edit</a>
+                  <a href="{{ url('/deletetask/'.$fetchedData ->id)}}" class="btn btn-danger ">Delele</a>
+
+                </div>
+                </div>
+              </div>
+        </div>
+
+
+
+    @endforeach
+
+    </div>
+
+
+
+
+</div>
 
 
 
