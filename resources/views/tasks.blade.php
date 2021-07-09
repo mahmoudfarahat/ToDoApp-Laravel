@@ -23,9 +23,9 @@
     <div class="col-3">
         <div class="card"  >
             <div class="card-body">
-              <h5 class="card-title">{{$title}}</h5>
+              <h5 class="card-title"> </h5>
 
-              <p class="card-text">{{$content}}</p>
+              <p class="card-text"> </p>
               <div class="d-flex">
                 <a href="#" class="btn btn-primary mr-2" style="width: 50%">Edit</a>
                 <a href="#" class="btn btn-danger" style="width: 50%">Delete</a>

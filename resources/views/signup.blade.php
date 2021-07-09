@@ -12,16 +12,7 @@
 </head>
 
 <body>
-{{-- 
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif --}}
+
 
     <div class="container d-flex justify-content-center  ">
         <form class="  col-lg-4 col-xxl-3 col-md-5 col-sm-7   " style="margin-top: 150px"
@@ -33,20 +24,20 @@
 
             <div class="mb-3">
 
-                <input placeholder="name" name="name" type="text" class="form-control @error('name') is-invalid @enderror ">
+                <input placeholder="name" name="name" value="{{old('name')}}" type="text" class="form-control @error('name') is-invalid @enderror ">
                @error('name')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
             </div>
 
             <div class="mb-3">
-                <input placeholder="email" name="email" type="text" class="form-control  @error('email') is-invalid @enderror ">
+                <input placeholder="email" name="email" value="{{old('email')}}"  type="text" class="form-control  @error('email') is-invalid @enderror ">
                 @error('email')
                 <div class="text-danger">{{ $message }}</div>
             @enderror
             </div>
             <div class="mb-3">
-                <input placeholder="Password" name="password" type="password" class="form-control  @error('password') is-invalid @enderror ">
+                <input placeholder="Password" name="password"    type="password" class="form-control  @error('password') is-invalid @enderror ">
                 @error('password')
                 <div class="text-danger">{{ $message }}</div>
             @enderror

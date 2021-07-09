@@ -29,13 +29,17 @@ Route::any('/show/{id?}', function ($i = null) {
 //     return view('addtask');
 //   });
 
-Route::get('add', 'taskcontroller@add');
+
 
 Route::get('signup', 'taskcontroller@signup');
 
 Route::post('submitsignup', 'taskcontroller@submitsignup');
 
-Route::get('tasks', 'taskcontroller@taskData');
 
+Route::get('add', 'taskcontroller@add');
+
+Route::post('addtask', 'taskcontroller@addtask');
+
+Route::get('showtasks', 'taskcontroller@showtasks');
 
 

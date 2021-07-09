@@ -3,14 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\task;
+use  App\Models\User;
 class taskcontroller extends Controller
 {
     //
-    public function add()
-    {
-        return view('addtask');
-    }
+
 
     public function signup()
     {
@@ -18,24 +16,44 @@ class taskcontroller extends Controller
     }
     public function submitsignup(Request $request)
     {
-        // dd($request->all());
-
-        // echo ' fdffdfdf';
-
-
-        $this->validate(request(),[
+        $data= $this->validate(request(),[
             'name'     => 'required|min:3',
             'password' => 'required|min:6',
             'email'    => 'required|email'
         ]);
+        $op=  User::create($data);
+        if($op){
 
-
+            return back();
+        }else{
+            echo 'error try again';
+        }
     }
 
-    public function taskData()
+    public function add()
     {
-        return view('tasks', ['title' => 'C# homework', 'content' => 'do all tasks']);
+        return view('addtask');
+    }
+    public function addtask(Request $request)
+    {
+       $data =  $this->validate(request(),[
+        'title'     => 'required|min:3',
+        'content' => 'required|min:10',
+        ]
+        );
+
+    $op=  task::create($data);
+
+    if($op){
+        return view('tasks');
+    }else{
+        echo 'error try again';
     }
 
 
+    }
+
+    public function showtasks(){
+        return view('tasks');
+    }
 }

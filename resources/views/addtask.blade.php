@@ -13,18 +13,24 @@
 
 
 <div class="container d-flex justify-content-center  ">
-    <form  class="  col-lg-4 col-xxl-3 col-md-5 col-sm-7" action="  " style=" margin-top: 250px;
+    <form  class="  col-lg-4 col-xxl-3 col-md-5 col-sm-7"  action="{{ url('/addtask') }}"   style=" margin-top: 250px;
 }"   method="post"  enctype ="multipart/form-data">
       <h4>Add your Task</h4>
 
-
+      @csrf
       <div class="mb-3 ">
-          <input   type="email" placeholder="Task Name " name="Task Name" class="form-control mb-3 "     >
+          <input   type="text" placeholder="title"  value="{{old('title')}}" name="title" class="form-control   @error('title') is-invalid @enderror  "     >
+          @error('title')
+          <div class="text-danger">{{ $message }}</div>
+      @enderror
+    </div>
+      <div class="mb-3 ">
+          <input   type="text" placeholder="content"  value="{{old('content')}}" name="content"   class="form-control   @error('content') is-invalid @enderror "   >
+          @error('content')
+          <div class="text-danger">{{ $message }}</div>
+      @enderror
+    </div>
 
-          <input   type="password" placeholder="Task details" name="Task details"  class="form-control mb-3 "   >
-
-
-        </div>
         <button type="submit" class="btn btn-primary  " style="width: 100%" >Add   </button>
 
 
