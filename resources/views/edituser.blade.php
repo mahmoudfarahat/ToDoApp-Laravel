@@ -17,39 +17,34 @@
 
     <div class="container d-flex justify-content-center  ">
         <form class="  col-lg-4 col-xxl-3 col-md-5 col-sm-7   " style="margin-top: 150px"
-            action="{{ url('/user') }}" method="post">
-            <h4>Sign Up and Start Your Plans!</h4>
+            action="{{ url('/user/'.$data['id']) }}" method="post">
+            <h4>Edit your Account</h4>
             <hr>
 
+      <input type="hidden" name="_method" value="put">
             @csrf
 
             <div class="mb-3">
 
-                <input placeholder="name" name="name" value="{{old('name')}}" type="text" class="form-control @error('name') is-invalid @enderror ">
+                <input placeholder="name" name="name" value="{{$data['name'] }} " type="text" class="form-control @error('name') is-invalid @enderror ">
                @error('name')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
             </div>
 
             <div class="mb-3">
-                <input placeholder="email" name="email" value="{{old('email')}}"  type="text" class="form-control  @error('email') is-invalid @enderror ">
+                <input placeholder="email" name="email" value="{{$data['email'] }}"  type="text" class="form-control  @error('email') is-invalid @enderror ">
                 @error('email')
                 <div class="text-danger">{{ $message }}</div>
             @enderror
             </div>
-            <div class="mb-3">
-                <input placeholder="Password" name="password"    type="password" class="form-control  @error('password') is-invalid @enderror ">
-                @error('password')
-                <div class="text-danger">{{ $message }}</div>
-            @enderror
-            </div>
 
 
 
 
 
 
-            <button type="submit" class="btn btn-danger submit-btn" style="width: 100%">Sign Up</button>
+            <button type="submit" class="btn btn-success submit-btn" style="width: 100%">Edit your Data</button>
 
         </form>
 
