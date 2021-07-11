@@ -13,6 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//admin routes
+Route::resource('admin', 'adminrole') ;
+
+Route::get('adminlogin', 'adminrole@adminlogin');
+
+Route::post('adminloginlogic', 'adminrole@adminloginlogic');
 
 // tasks routes
 
