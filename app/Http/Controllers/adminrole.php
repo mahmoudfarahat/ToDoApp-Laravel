@@ -131,4 +131,11 @@ session()->flash('message',$message);
         }
     }
 
+        public function logout(){
+            auth()->guard('admin')->logout();
+
+            return redirect(url('/adminlogin'));
+        }
+
+
 }

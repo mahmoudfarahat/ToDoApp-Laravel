@@ -6,6 +6,12 @@ use Illuminate\Http\Request;
 use App\Models\User;
 class operationscontroller extends Controller
 {
+
+    public function __construct(){
+
+        $this->middleware('adminlog',['except'  => ['create','store','login','loginlogic','logout']]);
+
+     }
     /**
      * Display a listing of the resource.
      *

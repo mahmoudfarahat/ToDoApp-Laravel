@@ -20,6 +20,9 @@ Route::get('adminlogin', 'adminrole@adminlogin');
 
 Route::post('adminloginlogic', 'adminrole@adminloginlogic');
 
+Route::get('adminlogout', 'adminrole@logout');
+
+
 // tasks routes
 
 Route::get('add', 'taskcontroller@add');
@@ -41,7 +44,7 @@ Route::get('deletetask/{id}', 'taskcontroller@deletetask');
 // Route::post('submitsignup', 'taskcontroller@submitsignup');
 
 
-Route::resource('user', 'operationscontroller') ;
+Route::resource('user', 'operationscontroller');
 
 Route::get('login', 'operationscontroller@login');
 
