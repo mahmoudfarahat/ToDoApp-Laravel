@@ -9,6 +9,12 @@ class taskcontroller extends Controller
 {
     //
 
+    public function __construct(){
+
+        $this->middleware('logcheck',['except'  => []]);
+
+     }
+
 
     public function signup()
     {

@@ -19,10 +19,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('add', 'taskcontroller@add');
 
 Route::get('edittask/{id}','taskcontroller@edittask');
-
+;
 Route::post('updatetask','taskcontroller@updatetask');
 
 Route::post('addtask', 'taskcontroller@addtask');
+// ->middleware('logcheck');
 
 Route::get('deletetask/{id}', 'taskcontroller@deletetask');
 
@@ -34,7 +35,13 @@ Route::get('deletetask/{id}', 'taskcontroller@deletetask');
 // Route::post('submitsignup', 'taskcontroller@submitsignup');
 
 
-Route::resource('user', 'operationscontroller');
+Route::resource('user', 'operationscontroller') ;
+
+Route::get('login', 'operationscontroller@login');
+
+Route::post('loginlogic', 'operationscontroller@loginlogic');
+
+Route::get('logout', 'operationscontroller@logout');
 
 
 
@@ -42,6 +49,11 @@ Route::resource('user', 'operationscontroller');
 
 
 
-
-
-
+Route::get('lang/{lang}',function($lang){
+if ($lang == 'en'){
+    session()->put('lang','en');
+}else{
+    session()->put('lang','ar');
+}
+return back();
+});

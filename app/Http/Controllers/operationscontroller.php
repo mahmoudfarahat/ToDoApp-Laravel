@@ -132,4 +132,40 @@ return redirect(url('/user' ));
     }
     return back();
     }
+
+    public function login(){
+        return view('login');
+
+
+    }
+
+
+    public function loginlogic(Request $request){
+        $data =  $this->validate(request(),[
+            'email'     => 'required|email',
+            'password'    => 'required|min:3'
+            ]
+            );
+
+
+            $remember = false;
+            if($request->rememberMe){
+                $remember = true;
+            }
+     if(auth()->attempt($data,$remember)){
+            return redirect('/user');
+        }else{
+            return redirect('/login');
+        }
+
+    }
+
+    public function logout(){
+
+        auth()->logout();
+
+        return redirect('/login');
+     }
+
+
 }
